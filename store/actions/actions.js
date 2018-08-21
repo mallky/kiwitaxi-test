@@ -5,7 +5,7 @@ export const addData = (data) => ({
   data
 });
 
-export const addFromData = (fromDate) => ({
-  type: types.ADD_FROM_DATE,
-  fromDate
+export const setCurrentPage = (pageNum) => ({
+  type: types.SET_CURRENT_PAGE,
+  pageNum
 });

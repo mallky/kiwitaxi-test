@@ -1,0 +1,18 @@
+.pagination-bar {
+  width: 100%;
+  max-width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    display: inline;
+    background: white;
+    border: solid 1px gray;
+
+    &:hover {
+      background: gray;
+      color: white;
+    }
+  }
+}

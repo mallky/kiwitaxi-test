@@ -1,3 +1,53 @@
 body {
-  color: red;
+  margin: 5px;
+  padding: 0;
+  background: #DEDEDE;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  .main-app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .text-field {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      font-size: 18px;
+    }
+
+    input {
+      text-align: center;
+      width: 100%;
+      max-width: 350px;
+      height: 50px;
+      border: none;
+      border-radius: 15px;
+    }
+
+    button {
+      width: 100%;
+      max-width: 350px;
+      border-radius: 10px;
+      border: solid 1px gray;
+      background: white;
+      margin: 10px;
+      padding: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background: gray;
+        color: white;
+      }
+    }
+  }
 }
