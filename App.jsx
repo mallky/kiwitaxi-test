@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { addData } from 'actions';
 import Page from 'components/page/Page.jsx';
 import PaginationBar from 'components/pagination-bar/PaginationBar.jsx';
+import SortingBar from 'components/sorting-bar/SortingBar.jsx';
 
 import utils from 'utils';
 
@@ -49,6 +50,7 @@ export default class App extends React.Component {
         <button onClick={this.onClick}>Find questions</button>
       </div>
       <Page />
+      <SortingBar />
       <PaginationBar />
     </div>;
   }

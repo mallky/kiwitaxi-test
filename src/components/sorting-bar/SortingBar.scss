@@ -1,0 +1,14 @@
+.sorting-bar {
+  margin: 5px;
+
+  button {
+    display: inline;
+    background: white;
+    border: solid 1px gray;
+
+    &:not([disabled]):hover {
+      background: gray;
+      color: white;
+    }
+  }
+}

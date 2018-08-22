@@ -1,7 +1,31 @@
 const MAX_ITEMS = 20;
 
 const getURL = (tag = 'sass') => {
-  return `https://api.stackexchange.com/2.2/questions?page=1000&order=desc&sort=votes&tagged=${tag}&site=stackoverflow`;
+  return `https://api.stackexchange.com/2.2/questions?page=1000&order=desc&sort=activity&tagged=${tag}&site=stackoverflow`;
+};
+
+/**
+ * split array for pagination
+ */
+const splitArray = (arr, size) => {
+  const pages = Math.ceil(arr.length / size);
+  const finalArr = [];
+
+  for (let i = 0; i < pages; i++) {
+    finalArr.push(arr.slice(i * size, (i + 1) * size ))
+  }
+
+  return finalArr;
+};
+
+const joinArray = (arr) => {
+  const joinArr = [];
+
+  arr.forEach(item => {
+    joinArr.push(...item);
+  });
+
+  return joinArr;
 };
 
 const getData = (tag, addData) => {
@@ -11,16 +35,9 @@ const getData = (tag, addData) => {
     })
     .then((data) => {
       const filteredByTitleAndCreationDate = data.items
-        .filter((item) => item.title.toLowerCase().match(tag.toLowerCase()))
-        .sort((prevItem, nextItem) => prevItem.creation_date - nextItem.creation_date);
+        .filter((item) => item.title.toLowerCase().match(tag.toLowerCase()));
 
-      // split array for pagination
-      const pages = Math.ceil(filteredByTitleAndCreationDate.length / MAX_ITEMS);
-      const finalData = [];
-
-      for (let i = 0; i < pages; i++) {
-        finalData.push(filteredByTitleAndCreationDate.slice(i * MAX_ITEMS, (i + 1) * MAX_ITEMS ))
-      }
+      const finalData = splitArray(filteredByTitleAndCreationDate, MAX_ITEMS);
 
       addData(finalData);
     });
@@ -28,5 +45,7 @@ const getData = (tag, addData) => {
 
 export default {
   getData,
+  splitArray,
+  joinArray,
   MAX_ITEMS
 };
