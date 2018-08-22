@@ -26,10 +26,6 @@ export default class App extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount() {
-    // utils.getData('react', this.props.addData);
-  }
-
   onChange(e) {
     this.setState({
       tag: e.target.value
