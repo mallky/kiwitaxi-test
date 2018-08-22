@@ -20,6 +20,7 @@ export default class CollapsedBlock extends React.Component {
 
   render() {
     return (<div className="collapsed-block">
+      <span className="number">{this.props.num}.</span>
       <button onClick={this.onClick}>
         {this.props.item.title}
       </button>
@@ -33,7 +34,7 @@ export default class CollapsedBlock extends React.Component {
         <p>Score: {this.props.item.score}</p>
         <p>Is answered: {this.props.item.is_answered ? 'yes' : 'no'}</p>
         <p>View count: {this.props.item.view_count}</p>
-        <p>Creation date: { Date(this.props.item.creation_date * FACTOR) }</p>
+        <p>Creation date: { (new Date(this.props.item.creation_date * FACTOR)).toLocaleDateString() }</p>
         <p>Tags: {this.props.item.tags.join('; ')}</p>
         <a href={this.props.item.link} target='_blank'>Question link</a>
       </div>
@@ -42,9 +43,11 @@ export default class CollapsedBlock extends React.Component {
 }
 
 CollapsedBlock.defaultProps = {
-  item: {}
-}
+  item: {},
+  num: 1
+};
 
 CollapsedBlock.propTypes = {
-  item: PropTypes.object
-}
+  item: PropTypes.object,
+  num: PropTypes.number
+};

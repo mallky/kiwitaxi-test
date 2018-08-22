@@ -1,4 +1,14 @@
 .collapsed-block {
+  position: relative;
+
+  .number {
+    position: absolute;
+    width: 30px;
+    left: -34px;
+    top: 5px;
+    text-align: right;
+  };
+
   .collapsed {
     width: 100%;
     text-align: center;

@@ -40,8 +40,6 @@ export default class App extends React.Component {
     utils.getData(this.state.tag, this.props.addData);
   }
 
-  _renderPaginationBlock
-
   render() {
     return <div className="main-app">
       <h1>KiwiTaxi test task</h1>
@@ -54,7 +52,7 @@ export default class App extends React.Component {
           id="text-input" />
         <button onClick={this.onClick}>Find questions</button>
       </div>
-      <Page data={this.props.data} />
+      <Page />
       <PaginationBar />
     </div>;
   }

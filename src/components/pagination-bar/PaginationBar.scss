@@ -10,7 +10,7 @@
     background: white;
     border: solid 1px gray;
 
-    &:hover {
+    &:not([disabled]):hover {
       background: gray;
       color: white;
     }

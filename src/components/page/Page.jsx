@@ -1,6 +1,7 @@
 import './Page.scss';
 import React from 'react';
 import { connect } from 'react-redux';
+import utils from 'utils';
 
 import CollapsedBlock from 'common/collapsed-block/CollapsedBlock.jsx';
 
@@ -12,17 +13,21 @@ const mapStateToProps = (state) => ({
 @connect(mapStateToProps)
 export default class Page extends React.Component {
   _renderList() {
-    return this.props.data
-      .map((item, i) => {
-        return <li key={i}>
-          <CollapsedBlock item={item} />
-        </li>
-      });
+    return this.props.data.length
+      ? this.props.data[this.props.pageNum]
+        .map((item, i) => {
+          const num = i + 1 + this.props.pageNum * utils.MAX_ITEMS;
+
+          return <li key={i}>
+            <CollapsedBlock item={item} num={num} />
+          </li>
+        })
+      : null;
   }
 
   render() {
     const renderElems = this._renderList();
-console.log(this.props.pageNum);
+
     return <div className="page-block">
       <ol>
         {renderElems}
