@@ -1,16 +1,14 @@
 import './SortingBar.scss';
 import React from 'react';
 import { connect } from 'react-redux';
-import { addData, setCurrentPage } from 'actions';
+import { addData } from 'actions';
 import utils from 'utils';
 
 const mapStateToProps = (state) => ({
-  data: state.data.data,
-  pageNum: state.data.pageNum
+  data: state.data.data
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  setCurrentPage:(pageNum) => dispatch(setCurrentPage(pageNum)),
   addData:(data) => dispatch(addData(data))
 });
 
