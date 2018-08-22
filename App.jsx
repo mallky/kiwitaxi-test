@@ -2,7 +2,7 @@ import './App.scss';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addData } from 'actions';
+import { addData, setCurrentPage } from 'actions';
 import Page from 'components/page/Page.jsx';
 import PaginationBar from 'components/pagination-bar/PaginationBar.jsx';
 
@@ -13,7 +13,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addData: (content) => dispatch(addData(content))
+  addData: (content) => dispatch(addData(content)),
+  setCurrentPage: (pageNum) => dispatch(setCurrentPage(pageNum))
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -33,7 +34,7 @@ export default class App extends React.Component {
   }
 
   onClick() {
-    utils.getData(this.state.tag, this.props.addData);
+    utils.getData(this.state.tag, this.props.addData, this.props.setCurrentPage);
   }
 
   render() {

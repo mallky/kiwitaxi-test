@@ -12,7 +12,7 @@ const mapStateToProps = (state) => ({
 
 @connect(mapStateToProps)
 export default class Page extends React.Component {
-  _renderList() {
+  _renderListItems() {
     return this.props.data.length
       ? this.props.data[this.props.pageNum]
         .map((item, i) => {
@@ -26,12 +26,16 @@ export default class Page extends React.Component {
   }
 
   render() {
-    const renderElems = this._renderList();
+    const renderElems = this._renderListItems();
 
     return <div className="page-block">
-      <ol>
-        {renderElems}
-      </ol>
+      {
+        renderElems
+          ? <ol>
+              {renderElems}
+            </ol>
+          : 'Sorry, questions not found. Please, try another key word.'
+      }
     </div>
   }
 }
