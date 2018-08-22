@@ -34,7 +34,7 @@ export default class Page extends React.Component {
           ? <ol>
               {renderElems}
             </ol>
-          : 'Sorry, questions not found. Please, try another key word.'
+          : 'The questions not found.'
       }
     </div>
   }
