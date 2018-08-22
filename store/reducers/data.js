@@ -13,7 +13,8 @@ const dataRed = (state = initialState, action) => {
 
       return {
         ...state,
-        data
+        data,
+        pageNum: 0
       };
 
     case types.SET_CURRENT_PAGE:

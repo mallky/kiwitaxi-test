@@ -4,7 +4,7 @@ const getURL = (tag = 'sass') => {
   return `https://api.stackexchange.com/2.2/questions?page=1000&order=desc&sort=votes&tagged=${tag}&site=stackoverflow`;
 };
 
-const getData = (tag, addData, setCurrentPage) => {
+const getData = (tag, addData) => {
   fetch(getURL(tag))
     .then((res) => {
       return res.json();
@@ -22,7 +22,6 @@ const getData = (tag, addData, setCurrentPage) => {
         finalData.push(filteredByTitleAndCreationDate.slice(i * MAX_ITEMS, (i + 1) * MAX_ITEMS ))
       }
 
-      setCurrentPage(0);
       addData(finalData);
     });
 };
