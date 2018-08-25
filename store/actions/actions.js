@@ -9,3 +9,8 @@ export const setCurrentPage = (pageNum) => ({
   type: types.SET_CURRENT_PAGE,
   pageNum
 });
+
+export const catchError = () => ({
+  type: types.CATCH_ERROR,
+  isError: true
+});

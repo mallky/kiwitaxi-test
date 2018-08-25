@@ -28,7 +28,7 @@ const joinArray = (arr) => {
   return joinArr;
 };
 
-const getData = (tag, addData) => {
+const getData = (tag, addData, catchError) => {
   fetch(getURL(tag))
     .then((res) => {
       return res.json();
@@ -40,6 +40,9 @@ const getData = (tag, addData) => {
       const finalData = splitArray(filteredByTitleAndCreationDate, MAX_ITEMS);
 
       addData(finalData);
+    })
+    .catch(() => {
+      catchError();
     });
 };
 

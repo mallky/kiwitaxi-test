@@ -7,7 +7,9 @@ import CollapsedBlock from 'common/collapsed-block/CollapsedBlock.jsx';
 
 const mapStateToProps = (state) => ({
   data: state.data.data,
-  pageNum: state.data.pageNum
+  pageNum: state.data.pageNum,
+  isError: state.data.isError,
+  firstTime: state.data.firstTime
 });
 
 @connect(mapStateToProps)
@@ -25,6 +27,14 @@ export default class Page extends React.Component {
       : null;
   }
 
+  _renderError() {
+    const {isError, firstTime} = this.props;
+
+    return isError
+      ? 'Something wrong!' : !firstTime
+        ? 'The questions not found.' : null;
+  }
+
   render() {
     const renderElems = this._renderListItems();
 
@@ -34,7 +44,7 @@ export default class Page extends React.Component {
           ? <ol>
               {renderElems}
             </ol>
-          : 'The questions not found.'
+          : this._renderError()
       }
     </div>
   }

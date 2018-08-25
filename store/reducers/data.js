@@ -2,7 +2,9 @@ import * as types from "./../types/consts";
 
 const initialState = {
   data: [],
-  pageNum: 0
+  pageNum: 0,
+  isError: false,
+  firstTime: true
 };
 
 const dataRed = (state = initialState, action) => {
@@ -14,7 +16,9 @@ const dataRed = (state = initialState, action) => {
       return {
         ...state,
         data,
-        pageNum: 0
+        pageNum: 0,
+        isError: false,
+        firstTime: false
       };
 
     case types.SET_CURRENT_PAGE:
@@ -23,6 +27,12 @@ const dataRed = (state = initialState, action) => {
       return {
         ...state,
         pageNum
+      };
+
+    case types.CATCH_ERROR:
+      return {
+        ...state,
+        isError: action.isError
       };
 
     default:

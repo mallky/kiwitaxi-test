@@ -2,7 +2,7 @@ import './App.scss';
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { addData } from 'actions';
+import { addData, catchError } from 'actions';
 import Page from 'components/page/Page.jsx';
 import PaginationBar from 'components/pagination-bar/PaginationBar.jsx';
 import SortingBar from 'components/sorting-bar/SortingBar.jsx';
@@ -14,7 +14,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  addData: (content) => dispatch(addData(content))
+  addData: (content) => dispatch(addData(content)),
+  catchError: () => dispatch(catchError())
 });
 
 @connect(mapStateToProps, mapDispatchToProps)
@@ -34,7 +35,7 @@ export default class App extends React.Component {
   }
 
   onClick() {
-    utils.getData(this.state.tag, this.props.addData);
+    utils.getData(this.state.tag, this.props.addData, this.props.catchError);
   }
 
   render() {
